@@ -192,6 +192,19 @@ var multiply = function(x, y) {
 // 13. Write a function that divides two numbers without using the / operator  or
 // JavaScript's Math object.
 var divide = function(x, y) {
+  if (y === 0) {
+    return NaN;
+  }
+  if (x === 0) {
+    return 0;
+  }
+  if ( (x > 0 && y > 0 && x >= y) || (x < 0 && y < 0 && x <= y) ) {
+    return 1 + divide(x - y, y);
+  } else if ( (x > 0 && y < 0 && x+y >= 0) || (x < 0 && y > 0 && x+y <= 0) ) {
+    return 1 + divide(x + y, y);
+  } else {
+    return 0;
+  }
 };
 
 // 14. Find the greatest common divisor (gcd) of two positive numbers.  The GCD of two
