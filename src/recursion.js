@@ -140,6 +140,19 @@ var reverse = function(string) {
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
+  //"racecar"
+  //a word is a palindrome if its first and last characters are the same and the substring sans the first/last characters is also palindrome
+  //base case is when the remaining string is one or no characters 
+  string = string.trim().toLowerCase();
+  var length = string.length;
+  if (length === 0 || length === 1) {
+    return true;
+  }
+  if (string[0] === string[length - 1]) {
+    return palindrome(string.slice(1, length - 1));
+  } else {
+    return false;
+  }
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
