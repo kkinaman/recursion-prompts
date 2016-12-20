@@ -213,6 +213,15 @@ var divide = function(x, y) {
 // http://www.cse.wustl.edu/~kjg/cse131/Notes/Recursion/recursion.html
 // https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/the-euclidean-algorithm
 var gcd = function(x, y) {
+  if (x < 0 || y < 0) {
+    return null;
+  }
+  var smaller = Math.min(x, y);
+  for (var i = smaller; i > 0; i--) {
+    if (x % i === 0 && y % i === 0) {
+      return i;
+    }
+  }
 };
 
 // 15. Write a function that compares each character of two strings and returns true if
@@ -221,11 +230,18 @@ var gcd = function(x, y) {
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
+  // return compareStr(str1, str2);
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
 var createArray = function(str) {
+  var array = [];
+  if (str !== '') {
+    array.push(str[0]);
+    array = array.concat(createArray(str.slice(1)));
+  }
+  return array;
 };
 
 // 17. Reverse the order of an array
